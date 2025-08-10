@@ -1,6 +1,6 @@
 baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
-title: 'Silverwis'
+title: 'Silverwis blog'
 theme: 'PaperMod'
 
 params:
