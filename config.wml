@@ -1,17 +1,48 @@
 baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
-title: 'Silverwis blog'
+title: '실버위즈 블로그'
 theme: 'PaperMod'
 
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
 params:
-  author: 'Silverwis'
-  description: '소비쿠폰-민생회복지원금'
+  env: production
+  title: 실버위즈 블로그
+  description: "개발과 일상 이야기"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: 실버위즈
   
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  
+  homeInfoParams:
+    Title: "안녕하세요! 👋"
+    Content: 개발과 일상을 기록하는 블로그입니다.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/ribyu2040-afk"
+
 menu:
   main:
-    - name: Home
+    - identifier: home
+      name: 홈
       url: /
-    - name: Posts
+      weight: 10
+    - identifier: posts
+      name: 게시글
       url: /posts/
-    - name: About
-      url: /about/
+      weight: 20
+    - identifier: tags
+      name: 태그
+      url: /tags/
+      weight: 30
