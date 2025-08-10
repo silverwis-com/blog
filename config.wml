@@ -1,4 +1,4 @@
-baseURL: 'https://username.github.io/my-blog'  # username을 본인 것으로 변경
+baseURL: 'https://blog.silverwis.com.netlify.app'
 languageCode: 'ko-kr'
 title: 'Silverwis'
 theme: 'PaperMod'
