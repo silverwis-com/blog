@@ -1,0 +1,17 @@
+baseURL: 'https://username.github.io/my-blog'  # username을 본인 것으로 변경
+languageCode: 'ko-kr'
+title: 'Silverwis'
+theme: 'PaperMod'
+
+params:
+  author: 'Silverwis'
+  description: '소비쿠폰-민생회복지원금'
+  
+menu:
+  main:
+    - name: Home
+      url: /
+    - name: Posts
+      url: /posts/
+    - name: About
+      url: /about/
