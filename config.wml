@@ -1,4 +1,4 @@
-baseURL: 'https://blog.silverwis.com.netlify.app'
+baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
 title: 'Silverwis'
 theme: 'PaperMod'
