@@ -4,10 +4,12 @@
 
 [build.environment]
   HUGO_VERSION = "0.128.0"
-  HUGO_ENV = "production"
-
+  
 [context.production]
   command = "hugo --minify"
-  
+
+[context.branch-deploy]
+  command = "hugo --minify"
+
 [context.deploy-preview]
-  command = "hugo --minify -D"
+  command = "hugo --minify"
