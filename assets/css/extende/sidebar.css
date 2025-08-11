@@ -1,4 +1,3 @@
-/* 햄버거 메뉴 버튼 */
 .hamburger {
     display: flex;
     flex-direction: column;
@@ -34,7 +33,6 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* 사이드바 오버레이 */
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -50,7 +48,6 @@
     display: block;
 }
 
-/* 사이드바 */
 .sidebar {
     position: fixed;
     top: 0;
@@ -115,12 +112,63 @@
     background-color: var(--tertiary);
 }
 
-/* 기존 메뉴 숨기기 */
 .nav .menu {
     display: none;
 }
 
-/* 반응형 */
+.category-section {
+    margin-top: 2rem;
+}
+
+.category-group {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.category-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.category-title a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.category-posts {
+    display: grid;
+    gap: 1rem;
+}
+
+.category-post {
+    padding: 1rem;
+    border: 1px solid var(--tertiary);
+    border-radius: 4px;
+}
+
+.category-post h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.category-post h4 a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.category-post time {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.entry-summary {
+    margin-top: 0.5rem;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 280px;
