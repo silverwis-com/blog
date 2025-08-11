@@ -1,40 +1,22 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
+            <!-- 햄버거 메뉴 버튼 -->
             <button class="hamburger" id="hamburger-btn" aria-label="메뉴 열기">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ site.Title }} (Alt + H)">
+            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ site.Title }}">
                 {{ site.Title }}
             </a>
         </div>
 
-        <div class="sidebar-overlay" id="sidebar-overlay"></div>
-        
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h3>메뉴</h3>
-                <button class="close-btn" id="close-btn">&times;</button>
-            </div>
-            <div class="sidebar-content">
-                <ul class="sidebar-menu">
-                    {{ range site.Menus.main }}
-                    <li class="sidebar-menu-item">
-                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                            <span>{{ .Name }}</span>
-                        </a>
-                    </li>
-                    {{ end }}
-                </ul>
-            </div>
-        </div>
-
+        <!-- 테마 토글 버튼 -->
         {{ if (not site.Params.disableThemeToggle) }}
         <div class="theme-toggle">
-            <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+            <button id="theme-toggle" accesskey="t" title="테마 변경">
                 <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
@@ -53,4 +35,26 @@
         </div>
         {{ end }}
     </nav>
+
+    <!-- 사이드바 오버레이 -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- 사이드바 -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>메뉴</h3>
+            <button class="close-btn" id="close-btn">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-menu">
+                {{ range site.Menus.main }}
+                <li class="sidebar-menu-item">
+                    <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
 </header>
