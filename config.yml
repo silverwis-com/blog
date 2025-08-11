@@ -1,19 +1,12 @@
 baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
-title: '실버위즈 블로그'
+title: '실버위즈 복지정보'
 theme: 'PaperMod'
-
-enableRobotsTXT: true
-buildDrafts: false
-buildFuture: false
-buildExpired: false
 
 params:
   env: production
-  title: 실버위즈 블로그
-  description: "개발과 일상 이야기"
-  keywords: [Blog, Portfolio, PaperMod]
-  author: 실버위즈
+  title: 실버위즈 복지정보
+  description: "누구나 쉽게 찾는 복지 혜택 정보"
   
   ShowReadingTime: true
   ShowShareButtons: true
@@ -25,24 +18,43 @@ params:
   UseHugoToc: true
   
   homeInfoParams:
-    Title: "안녕하세요! 👋"
-    Content: 개발과 일상을 기록하는 블로그입니다.
+    Title: "복지 혜택, 쉽게 찾아보세요! 💝"
+    Content: |
+      **놓치기 쉬운 복지 혜택 정보**를 정리해드립니다.
+      
+      청년부터 어르신까지, 모든 분들이 받을 수 있는 혜택을 알아보세요.
 
   socialIcons:
     - name: github
       url: "https://github.com/ribyu2040-afk"
 
+  # 검색 기능 활성화
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# 메뉴 설정
 menu:
   main:
     - identifier: home
-      name: 홈
+      name: 🏠 홈
       url: /
       weight: 10
-    - identifier: posts
-      name: 게시글
-      url: /posts/
+    - identifier: categories
+      name: 📂 카테고리
+      url: /categories/
       weight: 20
-    - identifier: tags
-      name: 태그
-      url: /tags/
+    - identifier: search
+      name: 🔍 검색
+      url: /search/
       weight: 30
+
+# 카테고리 기능 활성화
+taxonomies:
+  category: categories
+  tag: tags
