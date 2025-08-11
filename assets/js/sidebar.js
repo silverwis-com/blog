@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('sidebar-overlay');
     const closeBtn = document.getElementById('close-btn');
 
-    // 사이드바 열기
+    if (!hamburgerBtn || !sidebar || !overlay || !closeBtn) return;
+
     function openSidebar() {
         sidebar.classList.add('active');
         overlay.classList.add('active');
@@ -12,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
     }
 
-    // 사이드바 닫기
     function closeSidebar() {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
@@ -20,12 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     }
 
-    // 이벤트 리스너
     hamburgerBtn.addEventListener('click', openSidebar);
     closeBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
 
-    // ESC 키로 닫기
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && sidebar.classList.contains('active')) {
             closeSidebar();
