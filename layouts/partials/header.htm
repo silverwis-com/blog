@@ -1,43 +1,19 @@
-{{- /* theme-toggle is enabled */}}
-{{- if (not site.Params.disableThemeToggle) }}
-{{- /* theme-toggle is disabled */}}
-{{- end }}
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <!-- 햄버거 메뉴 버튼 -->
             <button class="hamburger" id="hamburger-btn" aria-label="메뉴 열기">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            {{- $label_text := (site.Title | default site.BaseURL) }}
-            {{- if site.Title }}
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-                {{- if site.Params.label.icon }}
-                {{- $img := resources.Get site.Params.label.icon }}
-                {{- if $img }}
-                    {{- $processedImg := $img | images.Filter (images.Process "resize 32x32") }}
-                    <img src="{{ $processedImg.RelPermalink }}" alt="" aria-label="logo"
-                        height="{{ div $processedImg.Height 2 }}" width="{{ div $processedImg.Width 2 }}">
-                {{- else }}
-                <img src="{{ site.Params.label.icon | absURL }}" alt="" aria-label="logo"
-                    height="32" width="32">
-                {{- end -}}
-                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
-                    {{ site.Params.label.iconSVG | safeHTML }}
-                {{- end }}
-                {{- $label_text }}
+            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ site.Title }} (Alt + H)">
+                {{ site.Title }}
             </a>
-            {{- end }}
         </div>
 
-        <!-- 사이드바 오버레이 -->
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
         
-        <!-- 사이드바 -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h3>메뉴</h3>
@@ -45,35 +21,36 @@
             </div>
             <div class="sidebar-content">
                 <ul class="sidebar-menu">
-                    {{- $currentPage := . }}
-                    {{- range site.Menus.main }}
-                    {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
-                    {{- $page_url:= $currentPage.Permalink | absLangURL }}
-                    {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
+                    {{ range site.Menus.main }}
                     <li class="sidebar-menu-item">
-                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr) }}"
-                        {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr) }}>
+                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
                             <span>{{ .Name }}</span>
                         </a>
                     </li>
-                    {{- end }}
+                    {{ end }}
                 </ul>
             </div>
         </div>
 
-        {{- if (not site.Params.disableThemeToggle) }}
+        {{ if (not site.Params.disableThemeToggle) }}
         <div class="theme-toggle">
             <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
-                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
                     <line x1="12" y1="21" x2="12" y2="23"></line>
                     <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+        {{ end }}
+    </nav>
+</header>
