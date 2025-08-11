@@ -1,0 +1,32 @@
+<!-- Google AdSense 자동 광고 (전체 사이트 적용) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1279348640476088"
+        crossorigin="anonymous"></script>
+
+<!-- AdSense 사이트 승인용 메타 태그 -->
+<meta name="google-adsense-account" content="ca-pub-1279348640476088">
+
+<!-- AdSense 자동 광고 활성화 -->
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1279348640476088",
+    enable_page_level_ads: true,
+    overlays: {bottom: true}
+});
+</script>
+
+<!-- 페이지 로드 후 광고 최적화 -->
+<script>
+window.addEventListener('load', function() {
+    // 자동 광고 초기화
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    
+    // 추가 자동 광고 설정
+    if (typeof adsbygoogle !== 'undefined') {
+        adsbygoogle.push({
+            google_ad_client: "ca-pub-1279348640476088",
+            enable_page_level_ads: true,
+            tag_partner: "site_kit"
+        });
+    }
+});
+</script>
