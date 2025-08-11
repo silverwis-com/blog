@@ -26,9 +26,6 @@ params:
       
       청년부터 어르신까지, 모든 분들이 받을 수 있는 혜택을 알아보세요.
 
-  socialIcons:
-    - name: github
-      url: "https://github.com/ribyu2040-afk"
 
   # 검색 기능 활성화
   fuseOpts:
