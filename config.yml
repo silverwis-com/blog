@@ -3,6 +3,8 @@ languageCode: 'ko-kr'
 title: '실버위즈 복지정보'
 theme: 'PaperMod'
 
+copyright: "실버위즈 복지정보"
+
 params:
   env: production
   title: 실버위즈 복지정보
