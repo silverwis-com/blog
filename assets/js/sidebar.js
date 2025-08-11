@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('sidebar-overlay');
     const closeBtn = document.getElementById('close-btn');
 
-    if (!hamburgerBtn || !sidebar || !overlay || !closeBtn) return;
+    if (!hamburgerBtn || !sidebar || !overlay || !closeBtn) {
+        console.log('Sidebar elements not found');
+        return;
+    }
 
     function openSidebar() {
         sidebar.classList.add('active');
@@ -20,9 +23,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     }
 
-    hamburgerBtn.addEventListener('click', openSidebar);
-    closeBtn.addEventListener('click', closeSidebar);
-    overlay.addEventListener('click', closeSidebar);
+    hamburgerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openSidebar();
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeSidebar();
+    });
+
+    overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeSidebar();
+    });
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && sidebar.classList.contains('active')) {
