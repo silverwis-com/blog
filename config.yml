@@ -9,6 +9,9 @@ params:
   title: 실버위즈 복지정보
   description: "누구나 쉽게 찾는 복지 혜택 정보"
   
+  # 기본 메뉴 숨기기
+  hiddenMenuItems: true
+  
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -18,18 +21,9 @@ params:
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
   
-  # 메뉴 숨기기 설정
-  disableScrollToTop: false
-  hidemeta: false
-  
-  homeInfoParams:
-    Title: "복지 혜택, 쉽게 찾아보세요! 💝"
-    Content: |
-      **놓치기 쉬운 복지 혜택 정보**를 정리해드립니다.
+  # 홈페이지에 글 목록 표시하지 않음
+  hidePostList: true
       
-      청년부터 어르신까지, 모든 분들이 받을 수 있는 혜택을 알아보세요.
-      
-  # 검색 기능 활성화
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
@@ -39,7 +33,6 @@ params:
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
 
-# 메뉴 설정 (사이드바용)
 menu:
   main:
     - identifier: home
@@ -55,7 +48,12 @@ menu:
       url: /search/
       weight: 30
 
-# 카테고리 기능 활성화
 taxonomies:
   category: categories
   tag: tags
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
