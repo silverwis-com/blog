@@ -1,44 +1,57 @@
 {{ define "main" }}
 
-{{ if site.Params.homeInfoParams }}
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>{{ site.Params.homeInfoParams.Title | markdownify }}</h1>
-    </header>
-    <div class="entry-content">
-        {{ site.Params.homeInfoParams.Content | markdownify }}
-    </div>
-</article>
-{{ end }}
+<!-- 블로그 타이틀 섹션 -->
+<div class="blog-header">
+    <h1 class="blog-title">{{ site.Title }}</h1>
+    <p class="blog-description">{{ site.Params.description }}</p>
+</div>
 
-<section class="category-section">
-    <h2>카테고리별 최신 글</h2>
+<!-- 카테고리별 글 목록 -->
+<div class="categories-container">
+    {{ $pages := where site.RegularPages "Type" "posts" }}
     
     {{ range $name, $taxonomy := site.Taxonomies.categories }}
-    {{ $categoryPages := $taxonomy.Pages | first 3 }}
+    {{ $categoryPages := $taxonomy.Pages }}
     {{ if $categoryPages }}
-    <div class="category-group">
-        <h3 class="category-title">
-            <a href="{{ "categories/" | absLangURL }}{{ $name | urlize }}/">{{ $name }}</a>
-        </h3>
-        <div class="category-posts">
-            {{ range $categoryPages }}
-            <article class="post-entry category-post">
-                <header class="entry-header">
-                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006.01.02" }}</time>
-                </header>
-                {{ if .Summary }}
-                <div class="entry-summary">
-                    {{ .Summary | plainify | htmlUnescape | chomp }}
+    
+    <section class="category-section">
+        <div class="category-header">
+            <h2 class="category-name">{{ $name }}</h2>
+            <a href="{{ "categories/" | absLangURL }}{{ $name | urlize }}/" class="view-all">전체보기 →</a>
+        </div>
+        
+        <div class="posts-list">
+            {{ range first 5 $categoryPages }}
+            <article class="post-item">
+                <div class="post-content">
+                    <h3 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <div class="post-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                            {{ .Date.Format "2006년 1월 2일" }}
+                        </time>
+                        {{ if .Params.tags }}
+                        <div class="post-tags">
+                            {{ range first 3 .Params.tags }}
+                            <span class="tag">#{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ if .Summary }}
+                    <div class="post-summary">
+                        {{ .Summary | plainify | htmlUnescape | chomp | truncate 100 }}
+                    </div>
+                    {{ end }}
                 </div>
-                {{ end }}
             </article>
             {{ end }}
         </div>
-    </div>
+    </section>
+    
     {{ end }}
     {{ end }}
-</section>
+</div>
 
 {{ end }}
