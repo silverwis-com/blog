@@ -2,7 +2,6 @@ baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
 title: '실버위즈 복지정보'
 theme: 'PaperMod'
-
 copyright: "실버위즈 복지정보"
 
 params:
@@ -19,14 +18,17 @@ params:
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
   
+  # 메뉴 숨기기 설정
+  disableScrollToTop: false
+  hidemeta: false
+  
   homeInfoParams:
     Title: "복지 혜택, 쉽게 찾아보세요! 💝"
     Content: |
       **놓치기 쉬운 복지 혜택 정보**를 정리해드립니다.
       
       청년부터 어르신까지, 모든 분들이 받을 수 있는 혜택을 알아보세요.
-
-
+      
   # 검색 기능 활성화
   fuseOpts:
     isCaseSensitive: false
@@ -37,7 +39,7 @@ params:
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
 
-# 메뉴 설정
+# 메뉴 설정 (사이드바용)
 menu:
   main:
     - identifier: home
