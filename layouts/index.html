@@ -1,0 +1,53 @@
+{{- define "main" }}
+
+{{- if site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ site.Params.homeInfoParams.Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ site.Params.homeInfoParams.Content | markdownify }}
+    </div>
+</article>
+{{- end }}
+
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+
+{{- if site.Params.homeInfoParams }}
+{{- $pages = $pages | first 5 }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+<!-- 카테고리별 최신 글 섹션 -->
+<section class="category-section">
+    <h2>카테고리별 최신 글</h2>
+    
+    {{- range $name, $taxonomy := site.Taxonomies.categories }}
+    {{- $categoryPages := $taxonomy.Pages | first 3 }}
+    {{- if $categoryPages }}
+    <div class="category-group">
+        <h3 class="category-title">
+            <a href="{{ "categories/" | absLangURL }}{{ $name | urlize }}/">{{ $name }}</a>
+        </h3>
+        <div class="category-posts">
+            {{- range $categoryPages }}
+            <article class="post-entry category-post">
+                <header class="entry-header">
+                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006.01.02" }}</time>
+                </header>
+                {{- if .Summary }}
+                <div class="entry-summary">
+                    {{ .Summary | plainify | htmlUnescape | chomp }}
+                </div>
+                {{- end }}
+            </article>
+            {{- end }}
+        </div>
+    </div>
+    {{- end }}
+    {{- end }}
+</section>
+
+{{- end }}{{/* end main */}}
