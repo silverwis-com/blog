@@ -9,9 +9,10 @@ params:
   title: 실버위즈 복지정보
   description: "누구나 쉽게 찾는 복지 혜택 정보"
   
-  # 기본 메뉴 숨기기
-  hiddenMenuItems: true
+  # 실제 Google AdSense ID
+  googleAdsense: "ca-pub-1279348640476088"
   
+  # 기존 설정들...
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -21,9 +22,6 @@ params:
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
   
-  # 홈페이지에 글 목록 표시하지 않음
-  hidePostList: true
-      
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
