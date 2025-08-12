@@ -1,7 +1,7 @@
 baseURL: 'https://blog.silverwis.com'
 languageCode: 'ko-kr'
 title: '실버위즈 복지정보'
-theme: 'hugoplate'
+theme: 'Papermod'
 copyright: "실버위즈 복지정보"
 
 params:
